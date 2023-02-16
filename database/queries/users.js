@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { ObjectId } from "mongodb";
-import { db } from "../middlewares/database.js";
+import { db } from "../../api/middlewares/database.js";
 import process from "../../config/dotenv.js";
 
 export async function addUser({ firstName, lastName, email, password }) {
