@@ -1,0 +1,44 @@
+# Ignore Node.js core modules
+node_modules/
+
+# Ignore application dependencies
+# If you use Yarn, swap "npm-shrinkwrap.json" for "yarn.lock"
+npm-shrinkwrap.json
+package-lock.json
+yarn.lock
+
+# Ignore build output
+build/
+
+# Ignore logs and runtime data
+logs/
+*.log
+*.pid
+*.swp
+
+# Ignore environment-specific files
+.env
+.env.*
+!.env.example
+
+# Ignore VSCode files
+.vscode/
+
+# Ignore dependencies and build output for client-side code
+client/node_modules/
+client/build/
+
+# Ignore dependencies and build output for server-side code
+server/node_modules/
+server/build/
+
+# Ignore test coverage reports
+coverage/
+
+# Ignore configuration files that may contain secrets or sensitive information
+config.local.json
+config.local.js
+config.local.ts
+config.override.json
+config.override.js
+config.override.ts
