@@ -1,4 +1,9 @@
-import { addUser, getUserByEmail, getUserPassword } from "../db/users.js";
+import {
+    addUser,
+    getUserByEmail,
+    getUserPassword,
+} from "../../database/queries/users.js";
+
 import { comparePassword } from "../../utils/compare.js";
 import process from "../../config/dotenv.js";
 import Jwt from "jsonwebtoken";
@@ -27,7 +32,7 @@ export async function userLogin(req, res, next) {
 
     const token = Jwt.sign(
         {
-            id: user._id,
+            _id: user._id,
             email: user.email,
             role: user.role,
         },

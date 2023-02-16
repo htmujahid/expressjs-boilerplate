@@ -34,10 +34,10 @@ The directory structure of the project has been designed with the aim of maintai
 
 -   `api/`: This directory houses the codebase related to the API functionalities.
     -   `controllers/`: This directory contains the controllers that handle the business logic of a particular route.
-    -   `db/`: This directory contains the code related to database queries.
     -   `middlewares/`: This directory contains the middleware functions that are incorporated in the API request pipeline.
 -   `bootstrap/`: This directory comprises the code that is executed during the initialization of the application. It includes code that loads all the routes dynamically, sets the default middlewares.
 -   `config/`: This directory contains the configuration files for the application, such as the Express.js configuration file, database configuration, and other application-specific configurations.
+-   `database/`: This directory contains the code related to database queries and schemas.
 -   `routes/`: This directory contains the route handlers for the API endpoints. Each file in this directory defines a set of routes and their corresponding handlers, thus encapsulating the application's API functionalities.
 -   `utils/`: This directory comprises the utility functions that are used throughout the application.
 -   `validation/`: This directory contains the validation schemas that are employed for validating the incoming requests.

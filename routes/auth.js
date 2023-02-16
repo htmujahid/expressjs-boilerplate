@@ -1,4 +1,5 @@
-import { router } from "../config/express.js";
+import express from "express";
+const router = express.Router({ mergeParams: true });
 import { userLogin, userRegister } from "../api/controllers/auth.js";
 import { validateBody } from "../api/middlewares/validators.js";
 import { validationSchemas } from "../validation/index.js";
