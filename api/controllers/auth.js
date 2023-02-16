@@ -3,6 +3,7 @@ import {
     getUserByEmail,
     getUserPassword,
 } from "../../database/queries/users.js";
+
 import { comparePassword } from "../../utils/compare.js";
 import process from "../../config/dotenv.js";
 import Jwt from "jsonwebtoken";

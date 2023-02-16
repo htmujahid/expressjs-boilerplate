@@ -16,6 +16,7 @@ export async function tokenChecker(req, res, next) {
             message: "You are not authenticated to access this resource",
         });
     const { _id, email, role } = token;
+
     req.user = {
         _id,
         email,
@@ -26,7 +27,6 @@ export async function tokenChecker(req, res, next) {
 
 export function roleAuthorization(roles) {
     return (req, res, next) => {
-        console.log(req.user.role);
         if (!roles.includes(req.user.role))
             return res.status(403).json({
                 message: "You are not authorized to access this resource",
