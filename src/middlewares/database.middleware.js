@@ -1,6 +1,6 @@
-import { addSuperAdmin, getUserByEmail } from "../../database/queries/users.js";
-import process from "../../config/dotenv.js";
-import { getMongoClient } from "../../config/mongodb.js";
+import { addSuperAdmin, getUserByEmail } from "../database/queries/users.js";
+import process from "../config/dotenv.js";
+import { getMongoClient } from "../config/mongodb.js";
 
 export let db;
 

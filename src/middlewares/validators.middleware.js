@@ -1,6 +1,6 @@
-import ajv from "../../config/ajv.js";
+import ajv from '../config/ajv.js';
 
-export function validateBody(schema) {
+function validateBody(schema) {
     const validate = ajv.compile(schema);
     return (req, res, next) => {
         const valid = validate(req.body);
@@ -17,7 +17,7 @@ export function validateBody(schema) {
     };
 }
 
-export function validateQueryParams(schema) {
+function validateQueryParams(schema) {
     const validate = ajv.compile(schema);
     return (req, res, next) => {
         const valid = validate(req.query);
@@ -32,3 +32,8 @@ export function validateQueryParams(schema) {
         }
     };
 }
+
+export default {
+    validateBody,
+    validateQueryParams,
+};

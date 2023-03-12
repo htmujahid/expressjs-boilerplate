@@ -1,5 +1,5 @@
-import bodyParser from "body-parser";
-import database from "../api/middlewares/database.js";
+import bodyParser from 'body-parser';
+import database from '../middlewares/database.middleware.js';
 
 export function defaultMiddlwares(app) {
     app.use(bodyParser.json());
