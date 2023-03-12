@@ -32,13 +32,14 @@ This will define a new endpoint at `/api/new-route` that returns a JSON object c
 
 The directory structure of the project has been designed with the aim of maintaining modularity and organization of the codebase. Below is a brief description of each directory:
 
--   `api/`: This directory houses the codebase related to the API functionalities.
+-   `src/`
+    -   `bootstrap/`: This directory comprises the code that is executed during the initialization of the application. It includes code that loads all the routes dynamically, sets the default middlewares.
+    -   `config/`: This directory contains the configuration files for the application, such as the Express.js configuration file, database configuration, and other application-specific configurations.
     -   `controllers/`: This directory contains the controllers that handle the business logic of a particular route.
+    -   `database/`: This directory contains the code related to database queries and schemas.
     -   `middlewares/`: This directory contains the middleware functions that are incorporated in the API request pipeline.
--   `bootstrap/`: This directory comprises the code that is executed during the initialization of the application. It includes code that loads all the routes dynamically, sets the default middlewares.
--   `config/`: This directory contains the configuration files for the application, such as the Express.js configuration file, database configuration, and other application-specific configurations.
--   `database/`: This directory contains the code related to database queries and schemas.
--   `routes/`: This directory contains the route handlers for the API endpoints. Each file in this directory defines a set of routes and their corresponding handlers, thus encapsulating the application's API functionalities.
--   `utils/`: This directory comprises the utility functions that are used throughout the application.
--   `validation/`: This directory contains the validation schemas that are employed for validating the incoming requests.
--   `app.js`: This file initializes the Express.js server by importing the app instance from the config/express.js file. The start function is then called with the app instance as an argument to initialize the application. Finally, the listen method is called on the app instance with the specified port number to start the server.
+    -   `routes/`: This directory contains the route handlers for the API endpoints. Each file in this directory defines a set of routes and their corresponding handlers, thus encapsulating the application's API functionalities.
+    -   `services`: The core business logic of any operation inside controller resides in this director.
+    -   `utils/`: This directory comprises the utility functions that are used throughout the application.
+    -   `validation/`: This directory contains the validation schemas that are employed for validating the incoming requests.
+    -   `app.js`: This file initializes the Express.js server by importing the app instance from the config/express.js file. The start function is then called with the app instance as an argument to initialize the application. Finally, the listen method is called on the app instance with the specified port number to start the server.
