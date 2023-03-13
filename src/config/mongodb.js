@@ -1,6 +1,6 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
-import process from "./dotenv.js";
+import process from './dotenv.js';
 
 global.mongo = global.mongo || {};
 

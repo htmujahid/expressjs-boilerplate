@@ -6,7 +6,7 @@ async function tokenChecker(req, res, next) {
     const token_cookie = getCookie(req, 'auth-session-token');
     if (!token_cookie) {
         return res.status(401).json({
-            message: 'You are not authenticated to access this resource',
+            message: 'You are not authenticated to access this resource 1',
         });
     }
     try {

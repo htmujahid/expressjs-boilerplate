@@ -1,53 +1,53 @@
 export const loginForm = {
-    type: "object",
+    type: 'object',
     properties: {
         email: {
-            type: "string",
-            format: "email",
+            type: 'string',
+            format: 'email',
             errorMessage: {
-                format: "Email format is incorrect",
+                format: 'Email format is incorrect',
             },
         },
         password: {
-            type: "string",
+            type: 'string',
             minLength: 1,
             errorMessage: {
-                format: "Password cannot be empty",
+                format: 'Password cannot be empty',
             },
         },
     },
-    required: ["password", "email"],
+    required: ['email', 'password'],
     additionalProperties: false,
 };
 
 export const registerForm = {
-    type: "object",
+    type: 'object',
     properties: {
         firstName: {
-            type: "string",
+            type: 'string',
             minLength: 1,
             errorMessage: {
-                minLength: "First name cannot be empty",
+                minLength: 'First name cannot be empty',
             },
         },
         lastName: {
-            type: "string",
+            type: 'string',
         },
         email: {
-            type: "string",
-            format: "email",
+            type: 'string',
+            format: 'email',
             errorMessage: {
-                format: "Email format is incorrect",
+                format: 'Email format is incorrect',
             },
         },
         password: {
-            type: "string",
+            type: 'string',
             minLength: 8,
             errorMessage: {
-                minLength: "Password must be at least 8 characters long",
+                minLength: 'Password must be at least 8 characters long',
             },
         },
     },
-    required: ["firstName", "email", "password"],
+    required: ['firstName', 'email', 'password'],
     additionalProperties: false,
 };

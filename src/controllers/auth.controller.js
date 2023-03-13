@@ -1,10 +1,12 @@
 import process from '../config/dotenv.js';
-import { setCookie } from '../utils/cookies.js';
+import { setCookie, getCookie } from '../utils/cookies.js';
 import userService from '../services/user.service.js';
 import authService from '../services/auth.service.js';
 
 async function userLogin(req, res, next) {
     const { email, password } = req.body;
+
+    console.log(req.headers);
 
     const { token, id, error } = await authService.loginWithEmailAndPassword(email, password);
 
@@ -15,12 +17,15 @@ async function userLogin(req, res, next) {
     }
 
     setCookie(res, 'auth-session-token', token, {
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+        httpOnly: true,
+        secure: false,
+        sameSite: 'none',
     });
 
     return res.status(200).json({
         id,
+        token,
     });
 }
 
@@ -40,4 +45,4 @@ async function userRegister(req, res, next) {
     });
 }
 
-export default { userLogin, userRegister };
+export default { userLogin, userRegister, userLogout };
