@@ -10,7 +10,7 @@ export const loginForm = {
         },
         password: {
             type: 'string',
-            minLength: 1,
+            format: 'password',
             errorMessage: {
                 format: 'Password cannot be empty',
             },

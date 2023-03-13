@@ -6,9 +6,7 @@ import authService from '../services/auth.service.js';
 async function userLogin(req, res, next) {
     const { email, password } = req.body;
 
-    console.log(req.headers);
-
-    const { token, id, error } = await authService.loginWithEmailAndPassword(email, password);
+    const { token, user, error } = await authService.loginWithEmailAndPassword(email, password);
 
     if (error) {
         return res.status(400).json({
@@ -24,7 +22,7 @@ async function userLogin(req, res, next) {
     });
 
     return res.status(200).json({
-        id,
+        user,
         token,
     });
 }
@@ -45,4 +43,4 @@ async function userRegister(req, res, next) {
     });
 }
 
-export default { userLogin, userRegister, userLogout };
+export default { userLogin, userRegister };

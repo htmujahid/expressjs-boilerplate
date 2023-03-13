@@ -1,25 +1,26 @@
 import { verify } from 'jsonwebtoken';
 import process from '../config/dotenv.js';
-import { getCookie } from '../utils/cookies.js';
+import { getAuthToken } from '../utils/token.js';
 
 async function tokenChecker(req, res, next) {
-    const token_cookie = getCookie(req, 'auth-session-token');
+    const token_cookie = getAuthToken(req);
     if (!token_cookie) {
         return res.status(401).json({
-            message: 'You are not authenticated to access this resource 1',
+            message: 'You are not authenticated to access this resource',
         });
     }
     try {
         const token = await verify(token_cookie, process.env.JWT_SECRET);
         if (!token)
             return res.status(401).json({
-                message: 'You are not authenticated to access this resource',
+                message: 'You are not authenticated to access this resources',
             });
 
-        const { _id, email, role } = token;
-
+        const { _id, email, role, firstName, lastName } = token;
         req.user = {
             _id,
+            firstName,
+            lastName,
             email,
             role,
         };

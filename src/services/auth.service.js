@@ -28,7 +28,7 @@ async function loginWithEmailAndPassword(email, password) {
 
     return {
         token,
-        id: user._id,
+        user,
     };
 }
 
