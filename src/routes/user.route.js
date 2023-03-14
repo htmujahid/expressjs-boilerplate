@@ -1,11 +1,11 @@
 import express from 'express';
 const router = express.Router({ mergeParams: true });
 
-import userController from '../controllers/user.controller.js';
-import authMiddleware from '../middlewares/auth.middleware.js';
+import UserController from '../controllers/user.controller.js';
+import AuthMiddleware from '../middlewares/auth.middleware.js';
 
-router.use('/user/', authMiddleware.tokenChecker);
+router.use('/user/', AuthMiddleware.tokenChecker);
 
-router.get('/user/', userController.userAccount);
+router.get('/user/', UserController.userAccount);
 
 export default router;

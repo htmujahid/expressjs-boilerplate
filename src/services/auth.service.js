@@ -1,9 +1,9 @@
 import { comparePassword } from '../utils/compare.js';
-import { getUserByEmail, getUserPassword } from '../database/queries/users.js';
-import tokenService from './token.service.js';
+import UserQuery from '../database/queries/users.js';
+import TokenService from './token.service.js';
 
 async function loginWithEmailAndPassword(email, password) {
-    const user = await getUserByEmail(email);
+    const user = await UserQuery.getUserByEmail(email);
 
     if (!user) {
         return {
@@ -13,7 +13,7 @@ async function loginWithEmailAndPassword(email, password) {
         };
     }
 
-    const userPassword = await getUserPassword(user._id);
+    const userPassword = await UserQuery.getUserPassword(user._id);
     const passwordMatch = await comparePassword(password, userPassword);
 
     if (!passwordMatch) {
@@ -24,7 +24,7 @@ async function loginWithEmailAndPassword(email, password) {
         };
     }
 
-    const token = tokenService.signToken(user);
+    const token = TokenService.signToken(user);
 
     return {
         token,

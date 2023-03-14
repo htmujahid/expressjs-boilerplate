@@ -1,7 +1,7 @@
-import { addUser, getUserByEmail } from '../database/queries/users.js';
+import UserQuery from '../database/queries/users.js';
 
 async function createNewUser(firstName, lastName, email, password) {
-    const user = await getUserByEmail(email);
+    const user = await UserQuery.getUserByEmail(email);
 
     if (user) {
         return {
@@ -11,7 +11,7 @@ async function createNewUser(firstName, lastName, email, password) {
         };
     }
 
-    const userId = await addUser({
+    const userId = await UserQuery.addUser({
         firstName,
         lastName,
         email,

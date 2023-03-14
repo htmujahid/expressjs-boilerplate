@@ -1,12 +1,11 @@
-import process from '../config/dotenv.js';
-import { setCookie, getCookie } from '../utils/cookies.js';
-import userService from '../services/user.service.js';
-import authService from '../services/auth.service.js';
+import UserService from '../services/user.service.js';
+import AuthService from '../services/auth.service.js';
+import { setCookie } from '../utils/cookies.js';
 
-async function userLogin(req, res, next) {
+async function userLogin(req, res) {
     const { email, password } = req.body;
 
-    const { token, user, error } = await authService.loginWithEmailAndPassword(email, password);
+    const { token, user, error } = await AuthService.loginWithEmailAndPassword(email, password);
 
     if (error) {
         return res.status(400).json({
@@ -27,10 +26,10 @@ async function userLogin(req, res, next) {
     });
 }
 
-async function userRegister(req, res, next) {
+async function userRegister(req, res) {
     const { firstName, lastName, email, password } = req.body;
 
-    const { id, error } = await userService.createNewUser(firstName, lastName, email, password);
+    const { id, error } = await UserService.createNewUser(firstName, lastName, email, password);
 
     if (error) {
         return res.status(400).json({
