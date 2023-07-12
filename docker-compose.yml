@@ -4,6 +4,9 @@ services:
   node-app:
     build: .
     image: node-app
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/ecommerce
+      - MONGODB_DB=ecommerce
     ports:
       - '3000:3000'
     depends_on:
