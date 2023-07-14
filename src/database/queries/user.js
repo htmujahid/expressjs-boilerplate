@@ -128,7 +128,6 @@ async function registerManyUsers(users) {
     const db = await database();
     const newUsers = users.map((user) => ({
         ...user,
-        role: user.role || 'user',
         password: bcrypt.hashSync(user.password, 10),
         emailVerified: null,
         createdAt: new Date(),
@@ -149,7 +148,11 @@ async function addSuperAdmin() {
         role: 'admin',
         emailVerified: new Date(),
     };
-    return await db.collection('users').insertOne(user);
+    const {insertedId} = await db.collection('users').insertOne(user);
+    // if (insertedId) {
+    //     await setUserRole(insertedId, 'admin');
+    // }
+    return insertedId;
 }
 async function updateUser(id, updatedData) {
     const db = await database();
@@ -252,6 +255,34 @@ async function verifyUserEmail(id) {
     return user.matchedCount ? date : null;
 }
 
+async function getUserRoles(userId) {
+    const db = await database();
+    const roles = await db.collection('user_role').find({ userId }).toArray();
+
+    const roleIds = roles.map((role) => role.roleId);
+
+    const roleNames = await db.collection('roles').find({ _id: { $in: roleIds } }).toArray();
+
+    if (!roleNames.length) return []
+
+    return roleNames.map((role) => role.name);
+}
+
+
+async function setUserRole(userId, name) {
+    const db = await database();
+    const role = await db.collection('roles').findOne({ name });
+    if (!role) {
+        return null;
+    }
+    const { insertedId } = await db.collection('user_role').insertOne({
+        userId,
+        roleId: role._id,
+    });
+
+    return insertedId;
+}
+
 module.exports = {
     getUserByEmail,
     getUserByEmailWithPassword,
@@ -268,4 +299,6 @@ module.exports = {
     deleteUser,
     findUser,
     verifyUserEmail,
+    getUserRoles,
+    setUserRole,
 };

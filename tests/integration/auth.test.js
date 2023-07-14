@@ -5,7 +5,7 @@ const httpMocks = require('node-mocks-http');
 const moment = require('moment');
 const bcrypt = require('bcryptjs');
 const app = require('../../src/app');
-const auth = require('../../src/middlewares/auth');
+const { auth } = require('../../src/middlewares/auth');
 const { tokenService, emailService } = require('../../src/services');
 const ApiError = require('../../src/utils/ApiError');
 const setupTestDB = require('../utils/setupTestDB');
@@ -562,7 +562,7 @@ describe('Auth middleware', () => {
 
         expect(next).toHaveBeenCalledWith(expect.any(ApiError));
         expect(next).toHaveBeenCalledWith(
-            expect.objectContaining({ statusCode: httpStatus.UNAUTHORIZED, message: httpStatus[httpStatus.UNAUTHORIZED] }),
+            expect.objectContaining({ statusCode: httpStatus.UNAUTHORIZED, message: httpStatus[httpStatus.UNAUTHORIZED] })
         );
     });
 
@@ -575,7 +575,7 @@ describe('Auth middleware', () => {
 
         expect(next).toHaveBeenCalledWith(expect.any(ApiError));
         expect(next).toHaveBeenCalledWith(
-            expect.objectContaining({ statusCode: httpStatus.FORBIDDEN, message: 'Forbidden' }),
+            expect.objectContaining({ statusCode: httpStatus.FORBIDDEN, message: 'Forbidden' })
         );
     });
 
