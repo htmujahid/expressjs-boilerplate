@@ -138,7 +138,8 @@ The environment variables can be found and modified in the `.env` file. They com
 PORT=3000
 
 # URL of the Mongo DB
-MONGODB_URL=mongodb://127.0.0.1:27017/expressjs-boilerplate
+MONGODB_URI=mongodb://127.0.0.1:27017/expressjs-boilerplate
+MONGODB_DB=expressjs-boilerplate
 
 # JWT
 # JWT secret key
